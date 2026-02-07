@@ -29,9 +29,23 @@
 
 ## Competition Result
 
-<p align="center">
-  <img src="assets/leaderboard.png" alt="Leaderboard" width="800">
-</p>
+<table>
+<tr>
+<td width="65%" align="center">
+
+<img src="assets/leaderboard.png" alt="Leaderboard" width="100%">
+
+</td>
+<td width="35%" align="center">
+
+<img src="assets/award_ceremony.jpg" alt="Award Ceremony" width="100%">
+
+**Samsung AI Challenge 2025**<br>
+**Excellence Award (우수상)**
+
+</td>
+</tr>
+</table>
 
 <div align="center">
 
@@ -39,6 +53,7 @@
 |--------|-------|
 | **Private Score** | **0.45777** |
 | **Final Rank** | **2nd / 264 teams** |
+| **Prize** | **Excellence Award (우수상, 500만원)** |
 | Fine-tuned mAP50 | **0.852** |
 | Fine-tuned mAP50-95 | **0.701** |
 | OCR Speed | Surya OCR 대비 **2.7x** |
