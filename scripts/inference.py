@@ -64,9 +64,12 @@ def _to_device_yolo(m):
     except Exception: pass
     return m
 
+# ---------------- Project Root ----------------
+_PROJECT_ROOT = str(Path(__file__).resolve().parent.parent)
+
 # ---------------- Hyperparams ----------------
-MODEL_DOCLAYNET_PATH = "./model/yolov12l-doclaynet.pt"
-MODEL_FINETUNE_PATH  = "./model/V5.pt"    # forcing_best
+MODEL_DOCLAYNET_PATH = _PROJECT_ROOT + "/models/pretrained/yolov12l-doclaynet.pt"
+MODEL_FINETUNE_PATH  = _PROJECT_ROOT + "/models/finetuned/V5.pt"    # forcing_best
 
 CONF_TITLE    = 0.15
 CONF_SUBTITLE = 0.15
@@ -84,7 +87,7 @@ CONF_SUBTITLE_PROMOTE_TO_TITLE = 0.80
 CAPTION_TEXT_FILTER_MIN_CONF   = 0.95
 
 SAVE_VIS = False
-VIS_DIR  = "./output/vis"
+VIS_DIR  = _PROJECT_ROOT + "/outputs/vis"
 
 SPAN_WIDTH_RATIO = 0.65
 SPAN_EXCLUDE_TOP_RATIO = 0.00
@@ -129,8 +132,8 @@ try:
     reader = easyocr.Reader(
         ['ko','en'],
         gpu=_HAS_CUDA,
-        model_storage_directory='./model',
-        user_network_directory='./model',
+        model_storage_directory=_PROJECT_ROOT + '/models/pretrained',
+        user_network_directory=_PROJECT_ROOT + '/models/pretrained',
         download_enabled=False,
         verbose=False
     )
@@ -139,8 +142,8 @@ except Exception:
     reader = easyocr.Reader(
         ['ko','en'],
         gpu=False,
-        model_storage_directory='./model',
-        user_network_directory='./model',
+        model_storage_directory=_PROJECT_ROOT + '/models/pretrained',
+        user_network_directory=_PROJECT_ROOT + '/models/pretrained',
         download_enabled=False,
         verbose=False
     )
@@ -744,11 +747,11 @@ def draw_bounding_boxes(image_pil, items, save_path, target_size):
 def convert_to_images_safe(file_path, temp_image_dir, dpi=800):
     return convert_to_images(file_path, temp_dir=temp_image_dir, dpi=dpi)
 
-def inference(test_csv_path="./data/test.csv", output_csv_path="./output/submission.csv"):
+def inference(test_csv_path=_PROJECT_ROOT + "/data/test.csv", output_csv_path=_PROJECT_ROOT + "/outputs/submission.csv"):
     output_dir=os.path.dirname(output_csv_path)
     os.makedirs(output_dir, exist_ok=True)
 
-    temp_image_dir="./temp_images"
+    temp_image_dir=_PROJECT_ROOT + "/temp_images"
     os.makedirs(temp_image_dir, exist_ok=True)
 
     csv_dir=os.path.dirname(test_csv_path)
@@ -795,4 +798,4 @@ def inference(test_csv_path="./data/test.csv", output_csv_path="./output/submiss
 
 # ---------------- Main ----------------
 if __name__=="__main__":
-    inference("./data/test.csv","./output/submission.csv")
+    inference(_PROJECT_ROOT + "/data/test.csv", _PROJECT_ROOT + "/outputs/submission.csv")

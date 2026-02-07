@@ -25,10 +25,10 @@
 # - 다운로드 출처:
 #     - EasyOCR GitHub Releases: https://github.com/JaidedAI/EasyOCR/releases
 # ============================================================
-# fine.py — YOLO(ultralytics) 파인튜닝 스크립트
+# train.py — YOLO(ultralytics) 파인튜닝 스크립트
 # - 모든 튜닝 변수를 맨 위 CONFIG 블록에서 한 번에 수정
 # - 본문은 변경 없이 실행만 하면 됨
-# - 실행:  python fine.py
+# - 실행:  python scripts/train.py  (프로젝트 루트에서)
 #   (Ultralytics가 학습 진행 상황을 터미널에 자동 출력합니다)
 # ============================================================
 
@@ -36,20 +36,19 @@
 # CONFIG — 여기 값을 바꿔서 튜닝하세요
 # ==============================
 
-root_dir = "./finetune/"
+from pathlib import Path as _Path
+PROJECT_ROOT = _Path(__file__).resolve().parent.parent
 
 # [데이터 분할 관련]
-SPLIT = True                 # True면 학습 전에 data/original → train/valid/test로 분할을 수행
-SPLIT_ROOT = root_dir + "data"           # 데이터 루트 폴더 (여기 하위에 original/, train/, valid/, test/가 위치)
-SPLIT_SRC = root_dir + "data/original"        # 원본 데이터 폴더명 (SPLIT_ROOT/원본/에 images, labels가 있어야 함)
+SPLIT = True                 # True면 학습 전에 data/raw → train/valid/test로 분할을 수행
+SPLIT_ROOT = str(PROJECT_ROOT / "data")        # 데이터 루트 폴더 (여기 하위에 raw/, train/, valid/, test/가 위치)
+SPLIT_SRC = "raw"                              # 원본 데이터 폴더명 (SPLIT_ROOT/raw/에 images, labels가 있어야 함)
 SPLIT_RATIOS = (0.9, 0.10, 0.00)  # (train, valid, test) 비율. 합이 1.0 이어야 함
-SPLIT_MOVE = False            # True: 이동(move) → original에서 파일이 사라짐 / False: 복사(copy)
+SPLIT_MOVE = False            # True: 이동(move) → raw에서 파일이 사라짐 / False: 복사(copy)
 
-
-
-WEIGHTS = root_dir + "models/base/yolov12l-doclaynet.pt"  # 시작 가중치(사전학습). yolov8{n/s/m/l/x}.pt 등
-DATA_YAML = root_dir + "cfg/data.yaml"         # YOLO 데이터 설정 파일 경로
-RUN_NAME = root_dir + "train_6cls_1024"        # 실험 이름. 결과는 runs/detect/<RUN_NAME>/에 저장됨
+WEIGHTS = str(PROJECT_ROOT / "models/pretrained/yolov12l-doclaynet.pt")  # 시작 가중치(사전학습)
+DATA_YAML = str(PROJECT_ROOT / "configs/data.yaml")       # YOLO 데이터 설정 파일 경로
+RUN_NAME = "train_6cls_1024"                               # 실험 이름. 결과는 experiments/<RUN_NAME>/에 저장됨
 
 IMGSZ = 1024                  # 입력 이미지 한 변 크기. 정수면 레터박스로 정사각(1024x1024)로 들어감
 BATCH = 16                     # 배치 크기. VRAM(예: RTX 4060 8GB)에 맞춰 조정
@@ -169,16 +168,16 @@ def train():
         hsv_h=HSV_H, hsv_s=HSV_S, hsv_v=HSV_V,
         cos_lr=COS_LR, patience=PATIENCE,
         deterministic=DETERMINISTIC, seed=SEED,
-        project="runs/detect", name=RUN_NAME
+        project=str(PROJECT_ROOT / "experiments"), name=RUN_NAME
     )
     print("[train args]", args)
     res = model.train(**args)
 
     # best.pt 백업
-    save_dir = Path(getattr(res, "save_dir", Path("runs/detect")/RUN_NAME))
+    save_dir = Path(getattr(res, "save_dir", PROJECT_ROOT/"experiments"/RUN_NAME))
     best = save_dir/"weights"/"best.pt"
     if best.exists():
-        out = Path("models/finetuned")/f"{RUN_NAME}_best.pt"
+        out = PROJECT_ROOT/"models"/"finetuned"/f"{RUN_NAME}_best.pt"
         out.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(best, out)
         print("✅ best.pt copied →", out)
@@ -186,15 +185,13 @@ def train():
         print("⚠️ best.pt not found at", best)
 
 if __name__ == "__main__":
-    here = Path(__file__).resolve().parent
-
     # 1) 선택적 데이터 분할
     if SPLIT:
         if abs(sum(SPLIT_RATIOS)-1.0) > 1e-6:
             raise ValueError("SPLIT_RATIOS의 합은 1.0이어야 합니다.")
         _seed_all(SEED, True)
         print("[split]", dict(root=SPLIT_ROOT, src=SPLIT_SRC, ratios=SPLIT_RATIOS, move=SPLIT_MOVE))
-        split_from_train(here/SPLIT_ROOT, SPLIT_SRC, SPLIT_RATIOS, SPLIT_MOVE)
+        split_from_train(Path(SPLIT_ROOT), SPLIT_SRC, SPLIT_RATIOS, SPLIT_MOVE)
 
     # 2) 학습 시작 (터미널 로그 자동 출력)
     print("[train start]")

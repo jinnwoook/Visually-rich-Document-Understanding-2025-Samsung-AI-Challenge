@@ -1,6 +1,6 @@
-train: ./finetune/data/train/images
-val:   ./finetune/data/valid/images
-test:  ./finetune/data/test/images
+train: ./data/train/images
+val:   ./data/valid/images
+test:  ./data/test/images
 nc: 6
 names: ['equation', 'image', 'subtitle', 'table', 'text', 'title']
 
