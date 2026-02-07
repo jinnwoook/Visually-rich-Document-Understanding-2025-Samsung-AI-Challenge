@@ -26,7 +26,7 @@
 | Fine-tuned mAP50-95 | **0.701** |
 | OCR 속도 개선 | Surya OCR 대비 **2.7x** |
 | 총 모델 크기 | **221 MB** (On-device 배포 가능) |
-| 학습 시간 | ~4시간 (NVIDIA H200, 61 epochs) |
+| 학습 시간 | ~4시간 (NVIDIA H100, 61 epochs) |
 
 ---
 
