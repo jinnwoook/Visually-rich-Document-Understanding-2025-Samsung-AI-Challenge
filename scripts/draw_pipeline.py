@@ -3,6 +3,7 @@ Visually-rich Document Understanding – Method Pipeline Figure
 논문 방법론 섹션용 파이프라인 그림 생성 스크립트
 """
 
+from pathlib import Path
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -323,7 +324,7 @@ for i in range(7):
 # =====================================================================
 #  Save
 # =====================================================================
-out_path = "/Users/jinnwoook/Desktop/포토폴리오/pipeline_figure.png"
+out_path = str(Path(__file__).resolve().parent.parent / "assets" / "pipeline_figure.png")
 fig.savefig(out_path, dpi=200, bbox_inches="tight",
             facecolor=C["bg"], edgecolor="none", pad_inches=0.15)
 plt.close(fig)
