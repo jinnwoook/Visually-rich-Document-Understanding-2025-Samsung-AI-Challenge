@@ -1,0 +1,12 @@
+train: ./finetune/data/train/images
+val:   ./finetune/data/valid/images
+test:  ./finetune/data/test/images
+nc: 6
+names: ['equation', 'image', 'subtitle', 'table', 'text', 'title']
+
+roboflow:
+  workspace: new-workspace-t7umm
+  project: ppt-dogsc
+  version: 5
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/new-workspace-t7umm/ppt-dogsc/dataset/5

@@ -1,0 +1,4 @@
+train: ../train/images
+
+nc: 6
+names: ['equation', 'image', 'subtitle', 'table', 'text', 'title']

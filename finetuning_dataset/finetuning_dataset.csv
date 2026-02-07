@@ -1,0 +1,101 @@
+ID,path,width,height,category,source_url,poster_detail_link,license
+Poster_0001,./train/images/Poster_0001.jpg,4000,2000,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/92985.png,https://neurips.cc/virtual/2024/poster/92985,CC BY 4.0
+Poster_0002,./train/images/Poster_0002.jpg,3456,2304,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/93181.png,https://neurips.cc/virtual/2024/poster/93181,CC BY 4.0
+Poster_0003,./train/images/Poster_0003.jpg,4320,2880,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/93183.png,https://neurips.cc/virtual/2024/poster/93183,CC BY 4.0
+Poster_0004,./train/images/Poster_0004.jpg,2592,1728,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/93190.png,https://neurips.cc/virtual/2024/poster/93190,CC BY 4.0
+Poster_0005,./train/images/Poster_0005.jpg,4966,2483,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/93235.png,https://neurips.cc/virtual/2024/poster/93235,CC BY 4.0
+Poster_0006,./train/images/Poster_0006.jpg,4071,2880,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/93260.png,https://neurips.cc/virtual/2024/poster/93260,CC BY 4.0
+Poster_0007,./train/images/Poster_0007.jpg,5120,2580,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/93454.png,https://neurips.cc/virtual/2024/poster/93454,CC BY 4.0
+Poster_0008,./train/images/Poster_0008.jpg,4320,2880,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/93543.png,https://neurips.cc/virtual/2024/poster/93543,CC BY 4.0
+Poster_0009,./train/images/Poster_0009.jpg,4319,2880,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/93633.png,https://neurips.cc/virtual/2024/poster/93633,CC BY 4.0
+Poster_0010,./train/images/Poster_0010.jpg,3780,2835,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/93930.png,https://neurips.cc/virtual/2024/poster/93930,CC BY 4.0
+Poster_0011,./train/images/Poster_0011.jpg,3689,2880,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/93958.png,https://neurips.cc/virtual/2024/poster/93958,CC BY 4.0
+Poster_0012,./train/images/Poster_0012.jpg,4320,2880,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/94113.png,https://neurips.cc/virtual/2024/poster/94113,CC BY 4.0
+Poster_0013,./train/images/Poster_0013.jpg,3234,2160,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/94140.png,https://neurips.cc/virtual/2024/poster/94140,CC BY 4.0
+Poster_0014,./train/images/Poster_0014.jpg,3456,2304,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/94152.png,https://neurips.cc/virtual/2024/poster/94152,CC BY 4.0
+Poster_0015,./train/images/Poster_0015.jpg,2500,1250,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/94270.png,https://neurips.cc/virtual/2024/poster/94270,CC BY 4.0
+Poster_0016,./train/images/Poster_0016.jpg,4713,2345,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/94397.png,https://neurips.cc/virtual/2024/poster/94397,CC BY 4.0
+Poster_0017,./train/images/Poster_0017.jpg,4000,2000,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/94493.png,https://neurips.cc/virtual/2024/poster/94493,CC BY 4.0
+Poster_0018,./train/images/Poster_0018.jpg,5120,2560,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/94523.png,https://neurips.cc/virtual/2024/poster/94523,CC BY 4.0
+Poster_0019,./train/images/Poster_0019.jpg,5120,2609,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/94826.png,https://neurips.cc/virtual/2024/poster/94826,CC BY 4.0
+Poster_0020,./train/images/Poster_0020.jpg,3399,2537,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/94833.png,https://neurips.cc/virtual/2024/poster/94833,CC BY 4.0
+Poster_0021,./train/images/Poster_0021.jpg,5120,2880,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/94898.png,https://neurips.cc/virtual/2024/poster/94898,CC BY 4.0
+Poster_0022,./train/images/Poster_0022.jpg,3750,2812,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/94944.png,https://neurips.cc/virtual/2024/poster/94944,CC BY 4.0
+Poster_0023,./train/images/Poster_0023.jpg,4094,2549,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/94950.png,https://neurips.cc/virtual/2024/poster/94950,CC BY 4.0
+Poster_0024,./train/images/Poster_0024.jpg,1123,794,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/95074.png,https://neurips.cc/virtual/2024/poster/95074,CC BY 4.0
+Poster_0025,./train/images/Poster_0025.jpg,5038,2880,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/95168.png,https://neurips.cc/virtual/2024/poster/95168,CC BY 4.0
+Poster_0026,./train/images/Poster_0026.jpg,3456,2304,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/95203.png,https://neurips.cc/virtual/2024/poster/95203,CC BY 4.0
+Poster_0027,./train/images/Poster_0027.jpg,5120,2880,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/95394.png,https://neurips.cc/virtual/2024/poster/95394,CC BY 4.0
+Poster_0028,./train/images/Poster_0028.jpg,2500,1250,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/95397.png,https://neurips.cc/virtual/2024/poster/95397,CC BY 4.0
+Poster_0029,./train/images/Poster_0029.jpg,2592,1728,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/95439.png,https://neurips.cc/virtual/2024/poster/95439,CC BY 4.0
+Poster_0030,./train/images/Poster_0030.jpg,3300,1650,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/95447.png,https://neurips.cc/virtual/2024/poster/95447,CC BY 4.0
+Poster_0031,./train/images/Poster_0031.jpg,2592,1728,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/95574.png,https://neurips.cc/virtual/2024/poster/95574,CC BY 4.0
+Poster_0032,./train/images/Poster_0032.jpg,3600,2400,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/95583.png,https://neurips.cc/virtual/2024/poster/95583,CC BY 4.0
+Poster_0033,./train/images/Poster_0033.jpg,3456,2304,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/95686.png,https://neurips.cc/virtual/2024/poster/95686,CC BY 4.0
+Poster_0034,./train/images/Poster_0034.jpg,5120,2880,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/95700.png,https://neurips.cc/virtual/2024/poster/95700,CC BY 4.0
+Poster_0035,./train/images/Poster_0035.jpg,4319,2880,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/95765.png,https://neurips.cc/virtual/2024/poster/95765,CC BY 4.0
+Poster_0036,./train/images/Poster_0036.jpg,2500,1751,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/95847.png,https://neurips.cc/virtual/2024/poster/95847,CC BY 4.0
+Poster_0037,./train/images/Poster_0037.jpg,2000,1333,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/95897.png,https://neurips.cc/virtual/2024/poster/95897,CC BY 4.0
+Poster_0038,./train/images/Poster_0038.jpg,3456,2304,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/96071.png,https://neurips.cc/virtual/2024/poster/96071,CC BY 4.0
+Poster_0039,./train/images/Poster_0039.jpg,5120,2813,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/96080.png,https://neurips.cc/virtual/2024/poster/96080,CC BY 4.0
+Poster_0040,./train/images/Poster_0040.jpg,3137,2304,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/96221.png,https://neurips.cc/virtual/2024/poster/96221,CC BY 4.0
+Poster_0041,./train/images/Poster_0041.jpg,4320,2880,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/96318.png,https://neurips.cc/virtual/2024/poster/96318,CC BY 4.0
+Poster_0042,./train/images/Poster_0042.jpg,4320,2880,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/96380.png,https://neurips.cc/virtual/2024/poster/96380,CC BY 4.0
+Poster_0043,./train/images/Poster_0043.jpg,1440,960,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/96771.png,https://neurips.cc/virtual/2024/poster/96771,CC BY 4.0
+Poster_0044,./train/images/Poster_0044.jpg,3456,2304,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/96793.png,https://neurips.cc/virtual/2024/poster/96793,CC BY 4.0
+Poster_0045,./train/images/Poster_0045.jpg,4000,2250,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/97539.png,https://neurips.cc/virtual/2024/poster/97539,CC BY 4.0
+Poster_0067,./train/images/Poster_0092.jpg,4031,2880,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/95562.png,https://neurips.cc/virtual/2024/poster/95562,CC_by_4.0
+Poster_0068,./train/images/Poster_0086.jpg,3456,2304,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/95340.png,https://neurips.cc/virtual/2024/poster/95340,CC_by_4.0
+Poster_0069,./train/images/Poster_0088.jpg,4320,2880,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/95387.png,https://neurips.cc/virtual/2024/poster/95387,CC_by_4.0
+Poster_0070,./train/images/Poster_0089.jpg,3888,2592,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/95388.png,https://neurips.cc/virtual/2024/poster/95388,CC_by_4.0
+Poster_0071,./train/images/Poster_0075.jpg,3179,2245,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/94372.png,https://neurips.cc/virtual/2024/poster/94372,CC_by_4.0
+Poster_0072,./train/images/Poster_0072.jpg,2500,1666,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/94187.png,https://neurips.cc/virtual/2024/poster/94187,CC_by_4.0
+Poster_0073,./train/images/Poster_0067.jpg,3600,2400,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/93109.png,https://neurips.cc/virtual/2024/poster/93109,CC_by_4.0
+Poster_0074,./train/images/Poster_0091.jpg,5120,2880,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/95527.png,https://neurips.cc/virtual/2024/poster/95527,CC_by_4.0
+Poster_0075,./train/images/Poster_0070.jpg,4320,2880,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/93538.png,https://neurips.cc/virtual/2024/poster/93538,CC_by_4.0
+Poster_0076,./train/images/Poster_0087.jpg,4071,2880,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/95376.png,https://neurips.cc/virtual/2024/poster/95376,CC_by_4.0
+Poster_0077,./train/images/Poster_0071.jpg,3800,2478,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/93724.png,https://neurips.cc/virtual/2024/poster/93724,CC_by_4.0
+Poster_0078,./train/images/Poster_0069.jpg,4320,2880,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/93441.png,https://neurips.cc/virtual/2024/poster/93441,CC_by_4.0
+Poster_0079,./train/images/Poster_0084.jpg,4320,2880,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/95026.png,https://neurips.cc/virtual/2024/poster/95026,CC_by_4.0
+Poster_0080,./train/images/Poster_0093.jpg,3200,1600,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/95693.png,https://neurips.cc/virtual/2024/poster/95693,CC_by_4.0
+Poster_0081,./train/images/Poster_0083.jpg,1192,916,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/95005.png,https://neurips.cc/virtual/2024/poster/95005,CC_by_4.0
+Poster_0082,./train/images/Poster_0099.jpg,5120,2627,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/96273.png,https://neurips.cc/virtual/2024/poster/96273,CC_by_4.0
+Poster_0083,./train/images/Poster_0082.jpg,3456,2304,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/94900.png,https://neurips.cc/virtual/2024/poster/94900,CC_by_4.0
+Poster_0084,./train/images/Poster_0077.jpg,4253,2836,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/94622.png,https://neurips.cc/virtual/2024/poster/94622,CC_by_4.0
+Poster_0085,./train/images/Poster_0095.jpg,4320,2880,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/95870.png,https://neurips.cc/virtual/2024/poster/95870,CC_by_4.0
+Poster_0086,./train/images/Poster_0073.jpg,3200,2133,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/94242.png,https://neurips.cc/virtual/2024/poster/94242,CC_by_4.0
+Poster_0087,./train/images/Poster_0085.jpg,3456,2304,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/95125.png,https://neurips.cc/virtual/2024/poster/95125,CC_by_4.0
+Poster_0088,./train/images/Poster_0094.jpg,2880,1920,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/95801.png,https://neurips.cc/virtual/2024/poster/95801,CC_by_4.0
+Poster_0089,./train/images/Poster_0080.jpg,4800,2880,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/94715.png,https://neurips.cc/virtual/2024/poster/94715,CC_by_4.0
+Poster_0090,./train/images/Poster_0074.jpg,4810,2880,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/94315.png,https://neurips.cc/virtual/2024/poster/94315,CC_by_4.0
+Poster_0091,./train/images/Poster_0097.jpg,4077,2880,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/95932.png,https://neurips.cc/virtual/2024/poster/95932,CC_by_4.0
+Poster_0092,./train/images/Poster_0090.jpg,2517,1885,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/95482.png,https://neurips.cc/virtual/2024/poster/95482,CC_by_4.0
+Poster_0093,./train/images/Poster_0100.jpg,2999,2121,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/96321.png,https://neurips.cc/virtual/2024/poster/96321,CC_by_4.0
+Poster_0094,./train/images/Poster_0068.jpg,5000,2500,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/93336.png,https://neurips.cc/virtual/2024/poster/93336,CC_by_4.0
+Poster_0095,./train/images/Poster_0076.jpg,4320,2880,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/94560.png,https://neurips.cc/virtual/2024/poster/94560,CC_by_4.0
+Poster_0096,./train/images/Poster_0098.jpg,2048,1536,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/96085.png,https://neurips.cc/virtual/2024/poster/96085,CC_by_4.0
+Poster_0097,./train/images/Poster_0096.jpg,2862,1899,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/95910.png,https://neurips.cc/virtual/2024/poster/95910,CC_by_4.0
+Poster_0098,./train/images/Poster_0081.jpg,1917,1255,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/94822.png,https://neurips.cc/virtual/2024/poster/94822,CC_by_4.0
+Poster_0099,./train/images/Poster_0079.jpg,3840,2560,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/94705.png,https://neurips.cc/virtual/2024/poster/94705,CC_by_4.0
+Poster_0100,./train/images/Poster_0078.jpg,4536,2268,PPT,https://neurips.cc/media/PosterPDFs/NeurIPS%202024/94634.png,https://neurips.cc/virtual/2024/poster/94634,CC_by_4.0
+Poster_0046,./train/images/Poster_0046.jpg,2168,1500,PPT,,,
+Poster_0047,./train/images/Poster_0047.jpg,2168,1500,PPT,,,
+Poster_0048,./train/images/Poster_0048.jpg,2168,1500,PPT,,,
+Poster_0049,./train/images/Poster_0049.jpg,2168,1500,PPT,,,
+Poster_0050,./train/images/Poster_0050.jpg,2168,1500,PPT,,,
+Poster_0051,./train/images/Poster_0051.jpg,2168,1500,PPT,,,
+Poster_0052,./train/images/Poster_0052.jpg,2168,1500,PPT,,,
+Poster_0053,./train/images/Poster_0053.jpg,2168,1500,PPT,,,
+Poster_0054,./train/images/Poster_0054.jpg,2168,1500,PPT,,,
+Poster_0055,./train/images/Poster_0055.jpg,2168,1500,PPT,,,
+Poster_0056,./train/images/Poster_0056.jpg,2168,1500,PPT,,,
+Poster_0057,./train/images/Poster_0057.jpg,2168,1500,PPT,,,
+Poster_0058,./train/images/Poster_0058.jpg,2168,1500,PPT,,,
+Poster_0059,./train/images/Poster_0059.jpg,2168,1500,PPT,,,
+Poster_0060,./train/images/Poster_0060.jpg,2168,1500,PPT,,,
+Poster_0061,./train/images/Poster_0061.jpg,2168,1500,PPT,,,
+Poster_0062,./train/images/Poster_0062.jpg,2168,1500,PPT,,,
+Poster_0063,./train/images/Poster_0063.jpg,4335,3000,Handmade,,null,
+Poster_0064,./train/images/Poster_0064.jpg,4335,3000,Handmade,,null,
+Poster_0065,./train/images/Poster_0065.jpg,4335,3000,Handmade,,null,
+Poster_0066,./train/images/Poster_0066.jpg,4335,3000,Handmade,,null,
