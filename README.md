@@ -408,6 +408,40 @@ doc1, text, 0.88, 1, "We propose a new simple network...", "10, 100, 500, 300"
 
 ---
 
+## Technical Paper
+
+> 본 프로젝트의 전체 방법론, 실험 설계, 결과 분석을 정리한 기술 논문입니다.
+
+<p align="center">
+  <img src="assets/paper_page-1.png" alt="Paper Page 1" width="700">
+</p>
+<p align="center">
+  <img src="assets/paper_page-2.png" alt="Paper Page 2" width="700">
+</p>
+<p align="center">
+  <img src="assets/paper_page-3.png" alt="Paper Page 3" width="700">
+</p>
+<p align="center">
+  <img src="assets/paper_page-4.png" alt="Paper Page 4" width="700">
+</p>
+<p align="center">
+  <img src="assets/paper_page-5.png" alt="Paper Page 5" width="700">
+</p>
+<p align="center">
+  <img src="assets/paper_page-6.png" alt="Paper Page 6" width="700">
+</p>
+<p align="center">
+  <img src="assets/paper_page-7.png" alt="Paper Page 7" width="700">
+</p>
+<p align="center">
+  <img src="assets/paper_page-8.png" alt="Paper Page 8" width="700">
+</p>
+<p align="center">
+  <img src="assets/paper_page-9.png" alt="Paper Page 9" width="700">
+</p>
+
+---
+
 ## Model Licenses
 
 | Model | License | Source |
