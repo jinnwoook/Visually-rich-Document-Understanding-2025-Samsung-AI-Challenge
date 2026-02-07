@@ -1,8 +1,51 @@
+<div align="center">
+
+<img src="assets/cover.png" alt="Cover" width="800">
+
+<br><br>
+
 # Visually-rich Document Understanding
 
-### 2025 Samsung AI Challenge | On-device Document Understanding System
+### 2025 Samsung AI Challenge | On-Device Document Understanding System
 
-> PDF, PPTX, 이미지 등 다양한 형식의 문서에서 **레이아웃 탐지**, **읽기 순서 예측**, **텍스트 추출(OCR)**을 통합 수행하는 멀티모달 문서 이해 파이프라인
+<br>
+
+[![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.5.1-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)](https://pytorch.org)
+[![YOLO](https://img.shields.io/badge/YOLOv12-Ultralytics-00FFFF?style=for-the-badge&logo=yolo&logoColor=black)](https://github.com/ultralytics/ultralytics)
+[![EasyOCR](https://img.shields.io/badge/EasyOCR-1.7.2-FF6F00?style=for-the-badge)](https://github.com/JaidedAI/EasyOCR)
+[![CUDA](https://img.shields.io/badge/CUDA-12.1-76B900?style=for-the-badge&logo=nvidia&logoColor=white)](https://developer.nvidia.com/cuda-toolkit)
+[![Optuna](https://img.shields.io/badge/Optuna-HPO-2496ED?style=for-the-badge)](https://optuna.org)
+[![scikit-learn](https://img.shields.io/badge/scikit--learn-1.7.1-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white)](https://scikit-learn.org)
+[![License](https://img.shields.io/badge/Data-CC_BY_4.0-lightgrey?style=for-the-badge)](https://creativecommons.org/licenses/by/4.0/)
+
+<br>
+
+> PDF, PPTX, 이미지 등 다양한 형식의 문서에서 **레이아웃 탐지**, **읽기 순서 예측**, **텍스트 추출(OCR)**을 통합 수행하는 경량 멀티모달 문서 이해 파이프라인
+
+</div>
+
+---
+
+## Competition Result
+
+<p align="center">
+  <img src="assets/leaderboard.png" alt="Leaderboard" width="800">
+</p>
+
+<div align="center">
+
+| Metric | Value |
+|--------|-------|
+| **Private Score** | **0.45777** |
+| **Final Rank** | **2nd / 264 teams** |
+| Fine-tuned mAP50 | **0.852** |
+| Fine-tuned mAP50-95 | **0.701** |
+| OCR Speed | Surya OCR 대비 **2.7x** |
+| Total Model Size | **221 MB** (On-device deployable) |
+| Training Time | ~4h (NVIDIA H200, 61 epochs) |
+
+</div>
 
 ---
 
@@ -10,59 +53,104 @@
 
 본 프로젝트는 **2025 삼성 AI 챌린지 Visually-rich Document Understanding** 트랙에 참가하여 개발한 **On-device 문서 이해 시스템**입니다.
 
-기존 OCR 기술은 단순 텍스트 추출에 머물러, 문서의 구조적 레이아웃과 읽기 흐름을 충분히 반영하지 못합니다. 본 시스템은 이 문제를 해결하기 위해 다음 네 가지 핵심 전략을 설계하였습니다:
+기존 OCR 기술은 단순 텍스트 추출에 머물러, 문서의 구조적 레이아웃과 읽기 흐름을 충분히 반영하지 못합니다. 본 시스템은 이 문제를 해결하기 위해 **네 가지 핵심 전략**을 설계하였습니다:
 
 1. **적응형 이중 모델 전략** - 세로형/가로형 문서에 따라 최적화된 YOLO 모델을 자동 선택
 2. **규칙 기반 후처리** - 반복적 오탐 패턴(중복 박스, Title 오분류, Caption 오탐)을 교정
 3. **구조 기반 읽기 순서 알고리즘** - 인간의 독서 습관을 모방한 3가지 전략 (책/신문/포스터 읽기)
 4. **경량 OCR 최적화** - EasyOCR + 800 DPI 렌더링으로 속도와 정확도의 균형 달성
 
-### Key Results
-
-| Metric | Value |
-|--------|-------|
-| **Public Score** | **0.4577** (Baseline 0.1168 대비 **+292%**) |
-| Fine-tuned mAP50 | **0.852** |
-| Fine-tuned mAP50-95 | **0.701** |
-| OCR 속도 개선 | Surya OCR 대비 **2.7x** |
-| 총 모델 크기 | **221 MB** (On-device 배포 가능) |
-| 학습 시간 | ~4시간 (NVIDIA H100, 61 epochs) |
-
 ---
 
 ## Pipeline Architecture
 
-시스템은 6단계 순차 파이프라인으로 구성되며, Layout Detection의 정확도가 전체 성능의 상한을 결정합니다.
+시스템은 **6단계 순차 파이프라인**으로 구성되며, Layout Detection의 정확도가 전체 성능의 상한을 결정합니다.
 
 <p align="center">
-  <img src="assets/pipeline_architecture.png" alt="Pipeline Architecture" width="100%">
+  <img src="assets/pipeline.png" alt="Pipeline Architecture" width="100%">
 </p>
-
-각 단계의 상세 내용은 아래와 같습니다:
 
 | Stage | Module | Description | Key Tech |
 |:-----:|--------|-------------|----------|
 | 1 | **Input** | PDF, PPTX, JPG/PNG 등 다양한 형식의 문서 입력 | - |
-| 2 | **Document Conversion** | 문서를 고해상도 이미지로 변환. PDF는 800 DPI로 렌더링, PPTX는 LibreOffice를 거쳐 PDF로 변환 후 PNG 추출 | pdf2image, Poppler |
-| 3 | **Layout Detection** | 문서 방향(세로/가로)을 판별하여 Base 모델 또는 Fine-tuned 모델로 6개 클래스의 레이아웃 요소 탐지. 1280x1280 리사이즈 후 imgsz=1024로 추론 | YOLOv12-L, Optuna |
-| 4 | **Post-Processing** | NMS, Subtitle->Title 승격, Single Top-Title 강제, Caption 패턴 필터링 등 4단계 규칙 기반 후처리 | Rule-based |
-| 5 | **Reading Order** | 문서 유형에 따라 Book-style, Newspaper-style, Poster Scan-mode 중 최적 전략을 선택하여 읽기 순서 결정 | KMeans Clustering |
-| 6 | **OCR + Text Extraction** | CRAFT 텍스트 탐지 + EasyOCR(한/영) 텍스트 인식 + 10단계 텍스트 클리닝 파이프라인 | EasyOCR, CRAFT |
+| 2 | **Document Conversion** | 문서를 고해상도 이미지로 변환. PDF는 800 DPI 렌더링, PPTX는 LibreOffice -> PDF -> PNG | `pdf2image`, `Poppler` |
+| 3 | **Layout Detection** | 문서 방향(세로/가로) 판별 후 최적 YOLO 모델로 6개 클래스 탐지 | `YOLOv12-L`, `Optuna` |
+| 4 | **Post-Processing** | NMS, Subtitle->Title 승격, Single Top-Title, Caption 필터링 | Rule-based |
+| 5 | **Reading Order** | 문서 유형별 Book / Newspaper / Poster 전략으로 읽기 순서 결정 | `KMeans` |
+| 6 | **OCR** | CRAFT 텍스트 탐지 + EasyOCR(한/영) + 10단계 텍스트 클리닝 | `EasyOCR`, `CRAFT` |
+
+---
+
+## Evaluation Metrics
+
+Samsung AI Challenge 공식 평가는 **세 가지 모듈의 가중합(Weighted Sum)**으로 최종 점수를 산출합니다.
+
+### Final Score
+
+$$S = 0.35 \cdot S_{\text{det}} + 0.35 \cdot S_{\text{ro}} + 0.30 \cdot S_{\text{ocr}}$$
+
+각 모듈은 순차 파이프라인으로 연결되므로, **상위 단계의 오류가 하위 단계 성능에 직접 전파(Error Propagation)**됩니다. 따라서 Layout Detection의 정확도가 전체 시스템 성능의 **상한(Upper Bound)**을 결정합니다.
+
+### Module-wise Metrics
+
+| Module | Weight | Metric | Description |
+|--------|:------:|--------|-------------|
+| **Layout Detection** | 35% | COCO mAP@[.5:.95] | 예측 박스를 confidence 내림차순 정렬 후, IoU 임계값 0.50~0.95 (0.05 간격)에서 카테고리별 AP를 산출하여 전체 평균 |
+| **Reading Order** | 35% | Coverage-weighted NED | GT와 예측을 IoU ≥ 0.5 기준 1:1 매칭 후, 순서 문자열의 Normalized Edit Distance 계산 |
+| **OCR** | 30% | 1 - mean(NED) | 매칭된 텍스트 카테고리의 SequenceMatcher 기반 NED 평균 (미매칭 시 NED=1.0 패널티) |
+
+### Sub-score Formulas
+
+**Layout Detection** - COCO-style mAP@[.5:.95]
+
+$$S_{\text{det}} = \frac{1}{|C| \cdot |T|} \sum_{c \in C} \sum_{\theta \in T} AP(c, \theta)$$
+
+> IoU threshold $T = \{0.50, 0.55, \ldots, 0.95\}$, Category $C = \{$title, subtitle, text, table, image, equation$\}$
+
+**Reading Order** - Coverage-weighted NED
+
+$$S_{\text{ro}}^{(d)} = \left(1 - \text{NED}(\mathbf{g},\, \mathbf{p})\right) \times \frac{|\text{matched}|}{|\text{GT}_{\text{RO}}|}$$
+
+> $\mathbf{g}$: GT 순서, $\mathbf{p}$: 예측 순서, Coverage 항은 미매칭 객체에 대한 패널티
+
+**OCR** - 1 - mean(NED)
+
+$$S_{\text{ocr}}^{(d)} = 1 - \frac{1}{N}\sum_{i=1}^{N} \text{NED}\!\left(t_i^{\text{gt}},\, t_i^{\text{pred}}\right)$$
+
+> 텍스트 카테고리(title, subtitle, text) 대상, 매칭 실패 시 NED = 1.0 (최대 패널티)
 
 ---
 
 ## Core Strategies
 
-### 1. Adaptive Dual-Model Strategy (적응형 이중 모델 전략)
+### 1. Adaptive Dual-Model Strategy
 
-세로형 문서(논문, 보고서)와 가로형 문서(PPT, 포스터)는 레이아웃 구성이 근본적으로 상이합니다. 세로형은 단일/이중 컬럼의 정형화된 구조를, 가로형은 자유로운 배치와 시각적 강조 요소가 혼재합니다. 이 도메인 간극을 해소하기 위해 문서 방향에 따라 모델을 자동 선택합니다.
+세로형 문서(논문, 보고서)와 가로형 문서(PPT, 포스터)는 레이아웃 구성이 근본적으로 상이합니다. 이 도메인 간극을 해소하기 위해 **문서 방향에 따라 모델을 자동 선택**합니다.
 
-| 문서 유형 | 선택 조건 | 사용 모델 | 특화 영역 |
-|-----------|-----------|-----------|-----------|
-| 세로형 (PDF, 논문) | `width <= height` | **YOLOv12-DocLayNet** (Base) | 정형화된 문서 레이아웃 |
-| 가로형 (PPTX, 포스터) | `width > height` 또는 PPTX | **YOLOv12 Fine-tuned** (V5.pt) | 비정형 포스터/프레젠테이션 |
+<table>
+<tr>
+<td width="50%" align="center">
 
-각 모델은 Optuna를 활용하여 클래스별 confidence threshold를 대회 점수 기준으로 독립 최적화하였습니다:
+**Portrait (세로형)**
+
+<img src="assets/detection_portrait.png" alt="Portrait Detection" width="95%">
+
+`width <= height` → **YOLOv12-DocLayNet** (Base)
+
+</td>
+<td width="50%" align="center">
+
+**Landscape (가로형)**
+
+<img src="assets/detection_landscape.png" alt="Landscape Detection" width="95%">
+
+`width > height` or PPTX → **YOLOv12 Fine-tuned** (V5.pt)
+
+</td>
+</tr>
+</table>
+
+각 모델은 **Optuna**를 활용하여 클래스별 confidence threshold를 대회 점수 기준으로 독립 최적화하였습니다:
 
 | Category | Base Model (세로형) | Fine-tuned Model (가로형) |
 |----------|:-------------------:|:-------------------------:|
@@ -73,32 +161,64 @@
 | Equation | 0.10 | 0.10 |
 | Image | 0.10 | 0.22 |
 
-### 2. Structure-based Reading Order (구조 기반 읽기 순서)
+### 2. Structure-based Reading Order
 
-의미론적 분석 없이 **레이아웃 구조만으로 인간의 독서 패턴을 모방**하는 3가지 읽기 전략을 설계하였습니다. 문서 유형에 따라 계층적으로 적용합니다.
+의미론적 분석 없이 **레이아웃 구조만으로 인간의 독서 패턴을 모방**하는 3가지 읽기 전략을 설계하였습니다.
 
-<p align="center">
-  <img src="assets/reading_order_strategies.png" alt="Reading Order Strategies" width="100%">
-</p>
+<table>
+<tr>
+<td width="33%" align="center">
 
-**Book-style** (단일 컬럼): 모든 요소를 y좌표 -> x좌표 순으로 정렬하고, y-tolerance 기반으로 라인을 그룹핑하여 각 라인 내에서 좌->우로 읽습니다.
+**Book-style**
 
-**Newspaper-style** (멀티 컬럼): 페이지 너비의 65% 이상인 텍스트 스팬을 감지하여 영역을 분할하고, 각 영역에서 KMeans 클러스터링(k=2,3)으로 컬럼을 자동 감지합니다. 컬럼별로 위->아래 순서로 읽습니다.
+<img src="assets/reading_book.png" alt="Book Reading" width="70%">
 
-**Poster Scan-mode** (가로형): Subtitle 행을 기준점으로 활용하여 문서를 영역 분할합니다. 각 Subtitle 아래의 세로 스트립을 독립적으로 읽으며, 숫자 접두사("1. 서론", "2. 방법")가 있으면 자동으로 번호순 정렬합니다.
+단일 컬럼 문서<br>
+y좌표 → x좌표 순 정렬<br>
+y-tolerance 기반 라인 그룹핑
 
-### 3. Rule-based Post-processing (규칙 기반 후처리)
+</td>
+<td width="33%" align="center">
 
-모델의 반복적 오류 패턴을 분석하여 4단계 후처리를 순차 적용합니다:
+**Newspaper-style**
+
+<img src="assets/reading_newspaper.png" alt="Newspaper Reading" width="70%">
+
+멀티 컬럼 문서<br>
+KMeans 클러스터링(k=2,3)<br>
+컬럼별 위→아래 순서
+
+</td>
+<td width="33%" align="center">
+
+**Poster Scan-mode**
+
+<img src="assets/reading_poster.png" alt="Poster Reading" width="95%">
+
+가로형 문서(PPT, 포스터)<br>
+Subtitle 행 기준 영역 분할<br>
+숫자 접두사 자동 번호순 정렬
+
+</td>
+</tr>
+</table>
+
+- **Book-style**: 모든 요소를 y좌표 → x좌표 순으로 정렬하고, y-tolerance 기반으로 라인을 그룹핑하여 각 라인 내에서 좌→우로 읽습니다.
+- **Newspaper-style**: 페이지 너비의 65% 이상 텍스트 스팬을 감지하여 영역을 분할하고, 각 영역에서 KMeans 클러스터링으로 컬럼을 자동 감지합니다.
+- **Poster Scan-mode**: Subtitle 행을 기준점으로 활용하여 문서를 영역 분할합니다. 각 Subtitle 아래의 세로 스트립을 독립적으로 읽으며, 숫자 접두사("1. 서론")가 있으면 자동으로 번호순 정렬합니다.
+
+### 3. Rule-based Post-processing
+
+모델의 반복적 오류 패턴을 분석하여 **4단계 후처리**를 순차 적용합니다:
 
 | Rule | Description | Parameter | 해결하는 문제 |
 |------|-------------|-----------|---------------|
 | **R1. NMS** | 신뢰도 기준 정렬 후 중복 박스 제거 | IoU = 0.5 | 동일 영역 복수 탐지 |
-| **R2. Subtitle -> Title** | 낮은 신뢰도의 Subtitle을 Title로 재분류 | conf < 0.80 | Title-Subtitle 오분류 |
+| **R2. Subtitle → Title** | 낮은 신뢰도의 Subtitle을 Title로 재분류 | conf < 0.80 | Title-Subtitle 오분류 |
 | **R3. Single Top-Title** | 최상단-좌측 Title만 유지, 나머지는 Subtitle로 변경 | 페이지당 1개 | 복수 Title 탐지 |
 | **R4. Caption Filter** | "Figure X:", "Table X:", "그림", "표" 패턴 매칭 후 제거 | conf < 0.95 | Caption 오탐지 |
 
-### 4. OCR Text Extraction (텍스트 추출)
+### 4. OCR Text Extraction
 
 | Component | Model | Role |
 |-----------|-------|------|
@@ -108,7 +228,7 @@
 
 OCR 추출 후 **10단계 텍스트 클리닝 파이프라인**을 적용합니다:
 
-> NFKC 정규화 -> 줄바꿈 통일 -> Math/Script 태그 제거 -> 하이픈-줄바꿈 병합 -> HTML 태그 제거 -> 불릿/번호 제거 -> 인라인 기호 제거 -> 하이픈 분리 단어 병합 -> 줄바꿈->공백 -> 연속 공백 정리
+> NFKC 정규화 → 줄바꿈 통일 → Math/Script 태그 제거 → 하이픈-줄바꿈 병합 → HTML 태그 제거 → 불릿/번호 제거 → 인라인 기호 제거 → 하이픈 분리 단어 병합 → 줄바꿈→공백 → 연속 공백 정리
 
 ---
 
@@ -123,7 +243,7 @@ OCR 추출 후 **10단계 텍스트 클리닝 파이프라인**을 적용합니�
 | **총 이미지** | 100장 |
 | **어노테이션 도구** | Roboflow |
 | **어노테이션 형식** | YOLO Detection Format (bbox + class) |
-| **이미지 해상도** | 1123x794 ~ 5120x2880 (가변) |
+| **이미지 해상도** | 1123×794 ~ 5120×2880 (가변) |
 | **라이선스** | CC BY 4.0 |
 | **데이터 분할** | Train 90장 (90%) / Validation 10장 (10%) |
 
@@ -147,11 +267,11 @@ OCR 추출 후 **10단계 텍스트 클리닝 파이프라인**을 적용합니�
 | Parameter | Value | Rationale |
 |-----------|-------|-----------|
 | Base Model | YOLOv12-Large (DocLayNet pretrained) | 문서 도메인 사전지식 활용 |
-| Input Size | 1024 x 1024 | 고해상도 요소 탐지 |
+| Input Size | 1024 × 1024 | 고해상도 요소 탐지 |
 | Batch Size | 16 | GPU 메모리 최적 활용 |
 | Max Epochs | 300 (Early Stop at 61) | Patience=50으로 과적합 방지 |
-| LR Schedule | Cosine Annealing (0.01 -> 0.0001) | 안정적 수렴 |
-| Augmentation | Mosaic 0.2, Scale +-20%, Translation +-5% | 문서 구조 보존 보수적 증강 |
+| LR Schedule | Cosine Annealing (0.01 → 0.0001) | 안정적 수렴 |
+| Augmentation | Mosaic 0.2, Scale ±20%, Translation ±5% | 문서 구조 보존 보수적 증강 |
 | Flip / Rotation | **OFF** | 텍스트 방향/읽기 순서 보존 |
 
 ### Performance
@@ -160,15 +280,17 @@ OCR 추출 후 **10단계 텍스트 클리닝 파이프라인**을 적용합니�
   <img src="assets/performance_results.png" alt="Performance Results" width="100%">
 </p>
 
-**Fine-tuning 학습 곡선**: Epoch 30 이후 검증 메트릭이 안정화되었으며, Epoch 61에서 Early Stopping이 작동하였습니다. 최종 mAP50 = **0.852**, mAP50-95 = **0.701**을 달성하였습니다.
+**Module-wise Ablation Study:**
 
-**Module-wise 성능 향상**: 각 모듈을 점진적으로 추가하며 평가한 결과, Baseline(0.1168) 대비 최종 시스템(0.4577)이 **292%** 향상되었습니다. 가장 큰 기여는 Fine-tuning(+78%)과 Rule-based Post-processing(+110%)이었습니다.
-
-| Module | Key Improvement | Main Factor |
-|--------|:---------------:|-------------|
-| Layout Detection | **+48%** (후처리), **+26%** (Fine-tuning), **+81%** (Optuna) | 적응형 모델 선택 + 임계값 최적화 |
-| Reading Order | **+128.6%** (전략 통합) | Poster Scan-mode 알고리즘 |
-| OCR | **2.7x** 속도 향상 | EasyOCR + DPI 800 최적화 |
+| Step | Setting | Public Score | Improvement |
+|:----:|---------|:-----------:|:-----------:|
+| 1 | Baseline (Surya OCR) | 0.1168 | - |
+| 2 | + YOLOv12-DocLayNet | 0.1515 | +29.7% |
+| 3 | + Rule-based Post-processing | 0.2243 | +48.0% |
+| 4 | + Fine-tuning (V5.pt) | 0.2828 | +26.1% |
+| 5 | + Optuna Threshold | 0.3285 | +16.2% |
+| 6 | + Reading Order Strategies | 0.4320 | +31.5% |
+| **7** | **+ EasyOCR + Text Cleaning** | **0.4577** | **+5.9%** |
 
 ---
 
@@ -184,7 +306,7 @@ OCR 추출 후 **10단계 텍스트 클리닝 파이프라인**을 적용합니�
 | **Text Detection** | CRAFT | - | 문자 영역 탐지 |
 | **Clustering** | scikit-learn | 1.7.1 | KMeans 멀티컬럼 감지 |
 | **Optimization** | Optuna | - | 신뢰도 임계값 자동 최적화 |
-| **Document** | pdf2image | 1.17.0 | PDF -> 이미지 변환 |
+| **Document** | pdf2image | 1.17.0 | PDF → 이미지 변환 |
 | **Image** | Pillow | 11.3.0 | 이미지 처리 및 시각화 |
 | **Data** | pandas | 2.3.2 | CSV 데이터 핸들링 |
 | **Numeric** | NumPy | 2.2.6 | 수치 연산 |
@@ -241,9 +363,6 @@ doc1, text, 0.88, 1, "We propose a new simple network...", "10, 100, 500, 300"
 ```
 .
 ├── assets/                     # README 이미지 리소스
-│   ├── pipeline_architecture.png
-│   ├── performance_results.png
-│   └── reading_order_strategies.png
 │
 ├── configs/                    # 설정 파일
 │   ├── data.yaml               #   YOLO 데이터셋 설정
@@ -260,30 +379,27 @@ doc1, text, 0.88, 1, "We propose a new simple network...", "10, 100, 500, 300"
 │
 ├── models/                     # 모델 가중치
 │   ├── pretrained/             #   사전학습 모델 (4개)
-│   │   ├── yolov12l-doclaynet.pt   # YOLOv12-L (DocLayNet pretrained)
-│   │   ├── craft_mlt_25k.pth      # CRAFT 텍스트 탐지
-│   │   ├── english_g2.pth         # EasyOCR 영어 모델
-│   │   └── korean_g2.pth          # EasyOCR 한국어 모델
+│   │   ├── yolov12l-doclaynet.pt
+│   │   ├── craft_mlt_25k.pth
+│   │   ├── english_g2.pth
+│   │   └── korean_g2.pth
 │   └── finetuned/              #   파인튜닝 모델 (3개)
-│       ├── V5.pt                   # 최종 제출 모델 (mAP50=0.852)
-│       ├── best.pt                 # 최고 성능 체크포인트
-│       └── last.pt                 # 마지막 에폭 체크포인트
+│       ├── V5.pt               #   최종 제출 모델 (mAP50=0.852)
+│       ├── best.pt
+│       └── last.pt
 │
 ├── scripts/                    # 실행 스크립트
-│   ├── train.py                #   학습 코드 (YOLOv12 Fine-tuning)
-│   ├── inference.py            #   추론 코드 (Detection + OCR + Reading Order)
+│   ├── train.py                #   학습 (YOLOv12 Fine-tuning)
+│   ├── inference.py            #   추론 (Detection + OCR + Reading Order)
 │   ├── generate_figures.py     #   README 이미지 생성
 │   └── draw_pipeline.py        #   논문용 파이프라인 시각화
 │
 ├── experiments/                # 학습 실험 로그
-│   ├── train_6cls_1024/        #   메인 실험 결과 (confusion matrix, curves 등)
-│   └── train_6cls_1024_v2/     #   2차 실험 결과
+│   └── train_6cls_1024/        #   메인 실험 결과
 │
 ├── docs/                       # 문서
 │   ├── paper_draft.md          #   기술 논문 초안
-│   ├── paper_summary.md        #   관련 연구 정리
 │   ├── overleaf_paper/         #   LaTeX 논문 소스
-│   ├── environment.txt         #   실행 환경 정보 (conda + GPU)
 │   └── solution_report.pdf     #   솔루션 보고서
 │
 ├── requirements.txt            # Python 의존성
