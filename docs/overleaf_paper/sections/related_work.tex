@@ -1,0 +1,41 @@
+% ===== 2. Related Work =====
+\section{Related Work}
+\label{sec:related}
+
+\subsection{Document Layout Analysis}
+
+문서 레이아웃 분석은 문서 이미지에서 텍스트, 표, 그림 등의 영역을 탐지하고 분류하는 과제이다.
+초기 연구는 규칙 기반 또는 전통적 컴퓨터 비전 기법에 의존하였으나,
+딥러닝의 발전과 함께 객체 탐지 프레임워크 기반 접근법이 주류가 되었다.
+
+\textbf{DocLayNet}~\cite{pfitzmann2022doclaynet}은 IBM에서 공개한 대규모 문서 레이아웃 데이터셋으로,
+80,000장 이상의 문서에 대해 11개 카테고리의 어노테이션을 제공한다.
+\textbf{YOLOv12}~\cite{ultralytics}는 Ultralytics에서 개발한 실시간 객체 탐지 프레임워크로,
+DocLayNet으로 사전학습된 YOLOv12-Large 모델은
+문서 도메인에서 높은 탐지 성능과 빠른 추론 속도를 동시에 제공한다.
+
+\subsection{Optical Character Recognition}
+
+OCR은 문서 이미지에서 텍스트를 추출하는 기술로,
+텍스트 탐지(detection)와 텍스트 인식(recognition)의 두 단계로 구성된다.
+\textbf{CRAFT}~\cite{baek2019craft}는 문자 수준의 영역 인식을 통해
+텍스트 영역을 탐지하는 모델이며,
+\textbf{EasyOCR}~\cite{easyocr}은 80개 이상의 언어를 지원하는
+경량 OCR 엔진으로 CRAFT를 텍스트 탐지 백엔드로 활용한다.
+
+\subsection{Reading Order Prediction}
+
+문서 내 요소의 읽기 순서를 결정하는 문제는
+단순 좌표 정렬로는 해결할 수 없는 복잡한 과제이다.
+특히 멀티 컬럼 레이아웃, 포스터형 자유 배치, 표$\cdot$그림$\cdot$캡션의 상호작용 등을 고려해야 한다.
+기존 연구는 주로 그래프 기반 방법이나 Transformer 기반 순서 예측을 시도하였으나,
+본 연구에서는 추가 학습 없이 레이아웃 구조만으로 작동하는
+규칙 기반 읽기 순서 알고리즘을 제안한다.
+
+\subsection{Hyperparameter Optimization}
+
+\textbf{Optuna}~\cite{akiba2019optuna}는 효율적인 하이퍼파라미터 최적화 프레임워크로,
+Tree-structured Parzen Estimator (TPE) 등의 알고리즘을 통해
+목적 함수를 최적화한다.
+본 연구에서는 Optuna를 활용하여 클래스별 detection confidence threshold를
+대회 Public Score를 목적 함수로 자동 탐색하였다.

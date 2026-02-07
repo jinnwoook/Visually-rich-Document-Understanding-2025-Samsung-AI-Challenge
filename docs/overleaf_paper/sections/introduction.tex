@@ -1,0 +1,34 @@
+% ===== 1. Introduction =====
+\section{Introduction}
+\label{sec:intro}
+
+현대 문서는 텍스트뿐만 아니라 제목, 표, 수식, 이미지, 강조 표현 등 다양한 시각적 요소로 구성된다.
+인간은 이러한 요소를 종합적으로 해석하여 문서의 의미와 의도를 이해하지만,
+기존 OCR 중심의 문서 처리 기술은 텍스트 추출에 머무르며
+문서 구조와 강조 의도를 충분히 반영하지 못하는 한계를 가진다~\cite{pfitzmann2022doclaynet}.
+
+Samsung AI Challenge의 Visually-rich Document Understanding 트랙은
+이러한 한계를 극복하기 위해 문서 내 \textbf{객체 탐지(Layout Detection)},
+\textbf{텍스트 추출(OCR)}, \textbf{읽기 순서(Reading Order)}를 통합적으로 평가한다.
+세 모듈의 가중 합산 점수(Layout Detection 35\%, Reading Order 35\%, OCR 30\%)로 최종 성능을 산출하며,
+각 모듈은 순차 파이프라인으로 연결되므로 상위 단계의 오류가 하위 단계 성능에 직접 전파된다.
+
+본 연구의 목표는 \textbf{정확도와 추론 속도를 동시에 고려한
+On-device 환경용 문서 이해 시스템}을 구축하는 것이다.
+이를 위해 문서 형태에 따른 적응형 모델 선택, 규칙 기반 후처리,
+구조 중심의 읽기 순서 알고리즘, 경량 OCR 최적화를 결합한 종합 파이프라인을 설계하였다.
+
+본 논문의 주요 기여는 다음과 같다:
+\begin{enumerate}[label=(\arabic*)]
+    \item \textbf{적응형 이중 모델 전략}:
+    세로형 문서(PDF, 논문)와 가로형 문서(PPTX, 포스터)의 구조적 차이를 인식하고,
+    각 유형에 최적화된 모델을 자동 선택한다.
+    \item \textbf{구조 기반 읽기 순서 알고리즘}:
+    의미론적 분석 없이 레이아웃 구조만으로 인간의 독서 패턴을 모방하는
+    세 가지 읽기 전략(책$\cdot$신문$\cdot$포스터 읽기)을 설계한다.
+    \item \textbf{Optuna 기반 신뢰도 임계값 최적화}:
+    클래스별 confidence threshold를 대회 점수를 목적 함수로 자동 탐색하여
+    탐지 성능을 극대화한다.
+    \item \textbf{On-device 경량 시스템}:
+    221\,MB 모델 크기와 EasyOCR 기반 경량 OCR로 실용적 배포가 가능한 시스템을 구현한다.
+\end{enumerate}

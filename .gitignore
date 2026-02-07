@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Training artifacts
+temp_images/
+outputs/
+data/train/
+data/valid/
+data/test/
+*.cache
+
+# Large model files (tracked via Git LFS)
+# *.pt
+# *.pth
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+*.log
+wandb/
+runs/
