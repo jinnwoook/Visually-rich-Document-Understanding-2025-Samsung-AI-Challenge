@@ -27,7 +27,7 @@
 
 ---
 
-## Competition Result
+## 🏆 Competition Result
 
 <table>
 <tr>
@@ -40,8 +40,9 @@
 
 <img src="assets/award_ceremony.jpg" alt="Award Ceremony" width="100%">
 
-**Samsung AI Challenge 2025**<br>
-**Excellence Award (우수상)**
+<h3>🥈 Excellence Award</h3>
+<h4>(우수상)</h4>
+<p>Samsung AI Challenge 2025</p>
 
 </td>
 </tr>
@@ -49,11 +50,11 @@
 
 <div align="center">
 
-| Metric | Value |
-|--------|-------|
+| 🏅 Achievement | Details |
+|:--------------:|:--------|
 | **Private Score** | **0.45777** |
-| **Final Rank** | **2nd / 264 teams** |
-| **Prize** | **Excellence Award (우수상, 500만원)** |
+| **Final Rank** | 🥈 **2nd / 264 teams** (Top 0.8%) |
+| **Prize** | 🏆 **Excellence Award (우수상, 500만원)** |
 | Fine-tuned mAP50 | **0.852** |
 | Fine-tuned mAP50-95 | **0.701** |
 | OCR Speed | Surya OCR 대비 **2.7x** |
@@ -64,20 +65,20 @@
 
 ---
 
-## Overview
+## 📋 Overview
 
 본 프로젝트는 **2025 삼성 AI 챌린지 Visually-rich Document Understanding** 트랙에 참가하여 개발한 **On-device 문서 이해 시스템**입니다.
 
 기존 OCR 기술은 단순 텍스트 추출에 머물러, 문서의 구조적 레이아웃과 읽기 흐름을 충분히 반영하지 못합니다. 본 시스템은 이 문제를 해결하기 위해 **네 가지 핵심 전략**을 설계하였습니다:
 
-1. **적응형 이중 모델 전략** - 세로형/가로형 문서에 따라 최적화된 YOLO 모델을 자동 선택
-2. **규칙 기반 후처리** - 반복적 오탐 패턴(중복 박스, Title 오분류, Caption 오탐)을 교정
-3. **구조 기반 읽기 순서 알고리즘** - 인간의 독서 습관을 모방한 3가지 전략 (책/신문/포스터 읽기)
-4. **경량 OCR 최적화** - EasyOCR + 800 DPI 렌더링으로 속도와 정확도의 균형 달성
+1. 🔄 **적응형 이중 모델 전략** - 세로형/가로형 문서에 따라 최적화된 YOLO 모델을 자동 선택
+2. 🛠️ **규칙 기반 후처리** - 반복적 오탐 패턴(중복 박스, Title 오분류, Caption 오탐)을 교정
+3. 📖 **구조 기반 읽기 순서 알고리즘** - 인간의 독서 습관을 모방한 3가지 전략 (책/신문/포스터 읽기)
+4. ⚡ **경량 OCR 최적화** - EasyOCR + 800 DPI 렌더링으로 속도와 정확도의 균형 달성
 
 ---
 
-## Pipeline Architecture
+## 🔄 Pipeline Architecture
 
 시스템은 **6단계 순차 파이프라인**으로 구성되며, Layout Detection의 정확도가 전체 성능의 상한을 결정합니다.
 
@@ -96,7 +97,7 @@
 
 ---
 
-## Evaluation Metrics
+## 📊 Evaluation Metrics
 
 Samsung AI Challenge 공식 평가는 **세 가지 모듈의 가중합(Weighted Sum)**으로 최종 점수를 산출합니다.
 
@@ -136,7 +137,7 @@ $$S_{\text{ocr}}^{(d)} = 1 - \frac{1}{N}\sum_{i=1}^{N} \text{NED}\!\left(t_i^{\t
 
 ---
 
-## Core Strategies
+## 🎯 Core Strategies
 
 ### 1. Adaptive Dual-Model Strategy
 
@@ -146,7 +147,7 @@ $$S_{\text{ocr}}^{(d)} = 1 - \frac{1}{N}\sum_{i=1}^{N} \text{NED}\!\left(t_i^{\t
 <tr>
 <td width="50%" align="center">
 
-**Portrait (세로형)**
+**📄 Portrait (세로형)**
 
 <img src="assets/detection_portrait.png" alt="Portrait Detection" width="95%">
 
@@ -155,7 +156,7 @@ $$S_{\text{ocr}}^{(d)} = 1 - \frac{1}{N}\sum_{i=1}^{N} \text{NED}\!\left(t_i^{\t
 </td>
 <td width="50%" align="center">
 
-**Landscape (가로형)**
+**🖼️ Landscape (가로형)**
 
 <img src="assets/detection_landscape.png" alt="Landscape Detection" width="95%">
 
@@ -184,7 +185,7 @@ $$S_{\text{ocr}}^{(d)} = 1 - \frac{1}{N}\sum_{i=1}^{N} \text{NED}\!\left(t_i^{\t
 <tr>
 <td width="33%" align="center">
 
-**Book-style**
+**📚 Book-style**
 
 <img src="assets/reading_book.png" alt="Book Reading" width="70%">
 
@@ -195,7 +196,7 @@ y-tolerance 기반 라인 그룹핑
 </td>
 <td width="33%" align="center">
 
-**Newspaper-style**
+**📰 Newspaper-style**
 
 <img src="assets/reading_newspaper.png" alt="Newspaper Reading" width="70%">
 
@@ -206,7 +207,7 @@ KMeans 클러스터링(k=2,3)<br>
 </td>
 <td width="33%" align="center">
 
-**Poster Scan-mode**
+**🪧 Poster Scan-mode**
 
 <img src="assets/reading_poster.png" alt="Poster Reading" width="95%">
 
@@ -218,16 +219,16 @@ Subtitle 행 기준 영역 분할<br>
 </tr>
 </table>
 
-- **Book-style**: 모든 요소를 y좌표 → x좌표 순으로 정렬하고, y-tolerance 기반으로 라인을 그룹핑하여 각 라인 내에서 좌→우로 읽습니다.
-- **Newspaper-style**: 페이지 너비의 65% 이상 텍스트 스팬을 감지하여 영역을 분할하고, 각 영역에서 KMeans 클러스터링으로 컬럼을 자동 감지합니다.
-- **Poster Scan-mode**: Subtitle 행을 기준점으로 활용하여 문서를 영역 분할합니다. 각 Subtitle 아래의 세로 스트립을 독립적으로 읽으며, 숫자 접두사("1. 서론")가 있으면 자동으로 번호순 정렬합니다.
+- **📚 Book-style**: 모든 요소를 y좌표 → x좌표 순으로 정렬하고, y-tolerance 기반으로 라인을 그룹핑하여 각 라인 내에서 좌→우로 읽습니다.
+- **📰 Newspaper-style**: 페이지 너비의 65% 이상 텍스트 스팬을 감지하여 영역을 분할하고, 각 영역에서 KMeans 클러스터링으로 컬럼을 자동 감지합니다.
+- **🪧 Poster Scan-mode**: Subtitle 행을 기준점으로 활용하여 문서를 영역 분할합니다. 각 Subtitle 아래의 세로 스트립을 독립적으로 읽으며, 숫자 접두사("1. 서론")가 있으면 자동으로 번호순 정렬합니다.
 
 ### 3. Rule-based Post-processing
 
 모델의 반복적 오류 패턴을 분석하여 **4단계 후처리**를 순차 적용합니다:
 
 | Rule | Description | Parameter | 해결하는 문제 |
-|------|-------------|-----------|---------------|
+|:----:|-------------|-----------|---------------|
 | **R1. NMS** | 신뢰도 기준 정렬 후 중복 박스 제거 | IoU = 0.5 | 동일 영역 복수 탐지 |
 | **R2. Subtitle → Title** | 낮은 신뢰도의 Subtitle을 Title로 재분류 | conf < 0.80 | Title-Subtitle 오분류 |
 | **R3. Single Top-Title** | 최상단-좌측 Title만 유지, 나머지는 Subtitle로 변경 | 페이지당 1개 | 복수 Title 탐지 |
@@ -247,12 +248,12 @@ OCR 추출 후 **10단계 텍스트 클리닝 파이프라인**을 적용합니�
 
 ---
 
-## Dataset
+## 📁 Dataset
 
 > 학습 데이터셋은 **자체 구축**하였으며, 대회 제공 PPT, 자체 제작 포스터, 외부 수집 데이터를 결합하여 구성하였습니다.
 
 | 항목 | 내용 |
-|------|------|
+|:----:|------|
 | **데이터 소스** | NeurIPS 2024 학술 포스터 |
 | **구성** | 대회 제공 PPT + 자체 제작 포스터 21장 + 외부 수집 79장 |
 | **총 이미지** | 100장 |
@@ -265,7 +266,7 @@ OCR 추출 후 **10단계 텍스트 클리닝 파이프라인**을 적용합니�
 ### Detection Classes (6 Classes)
 
 | Class | YOLO ID | Description | Example |
-|-------|:-------:|-------------|---------|
+|:-----:|:-------:|-------------|---------|
 | `title` | 5 | 문서 제목 | 논문/포스터의 메인 제목 |
 | `subtitle` | 2 | 섹션 헤더 | "1. Introduction", "Methods" |
 | `text` | 4 | 본문 텍스트 | 단락, 설명문 |
@@ -275,12 +276,12 @@ OCR 추출 후 **10단계 텍스트 클리닝 파이프라인**을 적용합니�
 
 ---
 
-## Training & Results
+## 🚀 Training & Results
 
 ### Fine-tuning Configuration
 
 | Parameter | Value | Rationale |
-|-----------|-------|-----------|
+|-----------|:-----:|-----------|
 | Base Model | YOLOv12-Large (DocLayNet pretrained) | 문서 도메인 사전지식 활용 |
 | Input Size | 1024 × 1024 | 고해상도 요소 탐지 |
 | Batch Size | 16 | GPU 메모리 최적 활용 |
@@ -309,12 +310,12 @@ OCR 추출 후 **10단계 텍스트 클리닝 파이프라인**을 적용합니�
 
 ---
 
-## Tech Stack
+## 🧰 Tech Stack
 
 ### Frameworks & Libraries
 
 | Category | Tool | Version | Role |
-|----------|------|---------|------|
+|:--------:|------|:-------:|------|
 | **Deep Learning** | PyTorch | 2.5.1+cu121 | 딥러닝 프레임워크 |
 | **Detection** | Ultralytics (YOLOv12) | 8.3.185 | 문서 레이아웃 탐지 |
 | **OCR** | EasyOCR | 1.7.2 | 한/영 다국어 텍스트 인식 |
@@ -330,7 +331,7 @@ OCR 추출 후 **10단계 텍스트 클리닝 파이프라인**을 적용합니�
 ### Training Environment
 
 | Item | Specification |
-|------|---------------|
+|:----:|---------------|
 | GPU | NVIDIA HGX H200 |
 | CUDA | 12.1 |
 | Training Time | ~4 hours (61 epochs, Early Stopped from 300) |
@@ -338,7 +339,7 @@ OCR 추출 후 **10단계 텍스트 클리닝 파이프라인**을 적용합니�
 
 ---
 
-## Quick Start
+## ⚡ Quick Start
 
 ### 1. Environment Setup
 
@@ -373,7 +374,7 @@ doc1, text, 0.88, 1, "We propose a new simple network...", "10, 100, 500, 300"
 
 ---
 
-## Project Structure
+## 📂 Project Structure
 
 ```
 .
@@ -423,44 +424,61 @@ doc1, text, 0.88, 1, "We propose a new simple network...", "10, 100, 500, 300"
 
 ---
 
-## Technical Paper
+## 📄 Technical Paper
 
 > 본 프로젝트의 전체 방법론, 실험 설계, 결과 분석을 정리한 기술 논문입니다.
 
-<p align="center">
-  <img src="assets/paper_page-1.png" alt="Paper Page 1" width="700">
-</p>
-<p align="center">
-  <img src="assets/paper_page-2.png" alt="Paper Page 2" width="700">
-</p>
-<p align="center">
-  <img src="assets/paper_page-3.png" alt="Paper Page 3" width="700">
-</p>
-<p align="center">
-  <img src="assets/paper_page-4.png" alt="Paper Page 4" width="700">
-</p>
-<p align="center">
-  <img src="assets/paper_page-5.png" alt="Paper Page 5" width="700">
-</p>
-<p align="center">
-  <img src="assets/paper_page-6.png" alt="Paper Page 6" width="700">
-</p>
-<p align="center">
-  <img src="assets/paper_page-7.png" alt="Paper Page 7" width="700">
-</p>
-<p align="center">
-  <img src="assets/paper_page-8.png" alt="Paper Page 8" width="700">
-</p>
-<p align="center">
-  <img src="assets/paper_page-9.png" alt="Paper Page 9" width="700">
-</p>
+<details>
+<summary><b>📖 Click to view Technical Paper (9 pages)</b></summary>
+
+<br>
+
+<div align="center">
+
+<img src="assets/paper_page-1.png" alt="Paper Page 1" width="700">
 
 ---
 
-## Model Licenses
+<img src="assets/paper_page-2.png" alt="Paper Page 2" width="700">
+
+---
+
+<img src="assets/paper_page-3.png" alt="Paper Page 3" width="700">
+
+---
+
+<img src="assets/paper_page-4.png" alt="Paper Page 4" width="700">
+
+---
+
+<img src="assets/paper_page-5.png" alt="Paper Page 5" width="700">
+
+---
+
+<img src="assets/paper_page-6.png" alt="Paper Page 6" width="700">
+
+---
+
+<img src="assets/paper_page-7.png" alt="Paper Page 7" width="700">
+
+---
+
+<img src="assets/paper_page-8.png" alt="Paper Page 8" width="700">
+
+---
+
+<img src="assets/paper_page-9.png" alt="Paper Page 9" width="700">
+
+</div>
+
+</details>
+
+---
+
+## 📜 Model Licenses
 
 | Model | License | Source |
-|-------|---------|--------|
+|-------|:-------:|--------|
 | YOLOv12 (Ultralytics) | AGPL-3.0 | [ultralytics/ultralytics](https://github.com/ultralytics/ultralytics) |
 | YOLOv12-DocLayNet | AGPL-3.0 | [hantian/yolo-doclaynet](https://huggingface.co/hantian/yolo-doclaynet) |
 | CRAFT (Text Detection) | Apache-2.0 | [clovaai/CRAFT-pytorch](https://github.com/clovaai/CRAFT-pytorch) |
@@ -469,10 +487,20 @@ doc1, text, 0.88, 1, "We propose a new simple network...", "10, 100, 500, 300"
 
 ---
 
-## References
+## 📚 References
 
 1. Ultralytics. *YOLOv12: Real-time Object Detection.* AGPL-3.0. https://github.com/ultralytics/ultralytics
 2. B. Pfitzmann et al. *DocLayNet: A Large Human-Annotated Dataset for Document-Layout Segmentation.* KDD, 2022.
 3. Y. Baek et al. *Character Region Awareness for Text Detection.* CVPR, 2019.
 4. JaidedAI. *EasyOCR: Ready-to-use OCR with 80+ Supported Languages.* Apache-2.0. https://github.com/JaidedAI/EasyOCR
 5. T. Akiba et al. *Optuna: A Next-generation Hyperparameter Optimization Framework.* KDD, 2019.
+
+---
+
+<div align="center">
+
+### 🏆 Samsung AI Challenge 2025 - Excellence Award 🏆
+
+[![GitHub](https://img.shields.io/badge/GitHub-jinnwoook-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/jinnwoook)
+
+</div>
